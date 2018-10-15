@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "lst_store")
-public class Store {
+public class Store extends AuditModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
