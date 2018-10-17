@@ -26,7 +26,7 @@ public class User extends AuditModel{
 	private String user_email;
 	
 	@NotNull
-	@Lob
+	@Size(max = 200)
 	private String user_address;
 	
 	@NotNull

@@ -22,7 +22,7 @@ public class Store extends AuditModel {
 	private String store_name;
 	
 	@NotNull
-	@Lob
+	@Size(max = 200)
 	private String store_address;
 	
 	@Size(max = 15)

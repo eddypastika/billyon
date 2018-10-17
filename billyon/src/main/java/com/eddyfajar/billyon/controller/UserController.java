@@ -1,14 +1,22 @@
 package com.eddyfajar.billyon.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.eddyfajar.billyon.exception.ResourceNotFoundException;
+import com.eddyfajar.billyon.model.ResponseModel;
 import com.eddyfajar.billyon.model.User;
 import com.eddyfajar.billyon.repository.UserRepository;
 
@@ -51,5 +59,29 @@ public class UserController {
 					return ResponseEntity.ok().build();
 				}).orElseThrow(() -> new ResourceNotFoundException("User not found with id "+user_id));
 	}
+	
+	@PostMapping("/login")
+	public ResponseModel<User> loginUser(@RequestBody User user){
+		ResponseModel<User> result =  new ResponseModel<>();
+		
+		//Check username exist or not
+		User data = userRepository.loginUser(user.getUser_name(), user.getUser_password());
+		
+		String message = "";
+		boolean error = false; 
+		if (data == null) {
+			error = true;
+			message = "login failed.";
+		} else {
+			error = false;
+			message = "login successfully.";
+		}
+		//Result json
+		result.setError(error);
+		result.setMessage(message);
+		result.setData(data);
+		return result;
+	}
+	
 
 }
