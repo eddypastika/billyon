@@ -33,6 +33,19 @@ public class UserController {
 	
 	@PostMapping("/register_user")
 	public User registerUser(@Valid @RequestBody User user) {
+		//User userRegister = new User();
+		//BCryptPasswordEncoder passwordEncoder =  new BCryptPasswordEncoder();
+		
+//		userRegister.setUser_name(user.getUser_name());
+//		userRegister.setUser_address(user.getUser_address());
+//		userRegister.setUser_email(user.getUser_email());
+//		userRegister.setUser_phone(user.getUser_phone());
+//		userRegister.setCreated_dt(user.getCreated_dt());
+//		userRegister.setUpdated_dt(user.getUpdated_dt());
+//		userRegister.setUser_role(user.getUser_role());
+//		userRegister.setUser_password(user.getUser_password());
+		//user.setUser_password(user.getUser_password());
+		
 		return userRepository.save(user);
 	}
 	
