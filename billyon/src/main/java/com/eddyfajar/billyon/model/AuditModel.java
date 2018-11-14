@@ -32,6 +32,9 @@ public abstract class AuditModel implements Serializable {
 	@Column(name = "updated_dt", nullable = false, updatable = false)
 	@LastModifiedDate
 	private Date updated_dt;
+	
+	@Column(name = "is_active", nullable = false , updatable = true)
+	private Integer is_active;
 
 	public Date getCreated_dt() {
 		return created_dt;
@@ -47,6 +50,14 @@ public abstract class AuditModel implements Serializable {
 
 	public void setUpdated_dt(Date updated_dt) {
 		this.updated_dt = updated_dt;
+	}
+
+	public Integer getIs_active() {
+		return is_active;
+	}
+
+	public void setIs_active(Integer is_active) {
+		this.is_active = is_active;
 	}
 	
 }

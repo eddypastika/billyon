@@ -6,90 +6,110 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "lst_user")
+@Table(name = "users")
 public class User extends AuditModel{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
+	private Long id;
 	
 	@NotNull
-	private String user_name;
+	private String email;
 	
 	@NotNull
-	@Size(max = 15)
-	private String user_phone;
+	private String first_name;
 	
 	@NotNull
-	@Size(max = 50)
-	@Column(unique = true)
-	private String user_email;
+	private String last_name;
 	
 	@NotNull
-	@Size(max = 200)
-	private String user_address;
+	private String phone;
+	
+	private String address;
+	
+	private Integer role_id;
 	
 	@NotNull
-	@Size(max = 15)
-	private String user_role;
+	private String password;
 	
-	@NotNull
-	private String user_password;
-
-	public Long getUser_id() {
-		return user_id;
+	
+	public User() {
 	}
 
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public User(Long id, String email, String first_name, String last_name,
+			String phone, String address, Integer role_id, String password) {
+		this.id = id;
+		this.email = email;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.phone = phone;
+		this.address = address;
+		this.role_id = role_id;
+		this.password = password;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getUser_phone() {
-		return user_phone;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser_phone(String user_phone) {
-		this.user_phone = user_phone;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getUser_email() {
-		return user_email;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public String getUser_address() {
-		return user_address;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setUser_address(String user_address) {
-		this.user_address = user_address;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
-	public String getUser_role() {
-		return user_role;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setUser_role(String user_role) {
-		this.user_role = user_role;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getUser_password() {
-		return user_password;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setUser_password(String user_password) {
-		this.user_password = user_password;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getRole_id() {
+		return role_id;
+	}
+
+	public void setRole_id(Integer role_id) {
+		this.role_id = role_id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

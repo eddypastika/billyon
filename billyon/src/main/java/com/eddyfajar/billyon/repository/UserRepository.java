@@ -11,7 +11,7 @@ import com.eddyfajar.billyon.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query(value="SELECT * FROM lst_user u WHERE u.user_name = :user_name and u.user_password = :user_password", nativeQuery=true)
-	User loginUser(@Param("user_name") String username, @Param("user_password") String password);
+	@Query(value="SELECT * FROM users u WHERE u.email = :email and u.password = :password", nativeQuery=true)
+	User loginUser(@Param("email") String email, @Param("password") String password);
 	
 }
