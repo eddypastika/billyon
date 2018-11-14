@@ -2,7 +2,7 @@ package com.eddyfajar.billyon.model;
 
 import java.util.List;
 
-public class LoginResponse extends AuditModel {
+public class LoginResponse {
 	
 	private User users;
 	private List<Menu> menus;

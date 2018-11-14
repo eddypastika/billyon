@@ -84,21 +84,33 @@ public class UserController {
 		boolean error = false; 
 		if (userLogedin == null) {
 			error = true;
-			message = "login failed.";
+			message = "Login failed. Wrong email or password.";
 		} else {
-			error = false;
-			message = "login successfully.";
-			
-			//Get stores
-			List<Store> userStores = storeRepository.userStores(userLogedin.getId());
-			
-			//Get menus
-			List<Menu> userMenus = menuRepository.listUserMenus(userLogedin.getRole_id());
-			
-			//Set Login Response
-			loginResponse.setUsers(userLogedin);
-			loginResponse.setStores(userStores);
-			loginResponse.setMenus(userMenus);
+			//IF is_active = 0
+			if (userLogedin.getIs_active() == 0) {
+				
+				error = true;
+				message = "Sorry, this user is inactive.";
+				loginResponse = null;
+				
+			} else {
+				
+				error = false;
+				message = "login successfully.";
+				
+				//Hide Password:
+				userLogedin.setPassword(null);
+				//Get stores
+				List<Store> userStores = storeRepository.userStores(userLogedin.getId());
+				
+				//Get menus
+				List<Menu> userMenus = menuRepository.listUserMenus(userLogedin.getRole_id());
+				
+				//Set Login Response
+				loginResponse.setUsers(userLogedin);
+				loginResponse.setStores(userStores);
+				loginResponse.setMenus(userMenus);
+			}
 		}
 		//Result json
 		result.setError(error);
