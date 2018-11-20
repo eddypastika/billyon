@@ -1,5 +1,6 @@
 package com.eddyfajar.billyon.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -48,20 +49,51 @@ public class UserController {
 		return userRepository.save(user);
 	}
 	
-//	@PutMapping("/edit_user/{user_id}")
-//	public User updateUser(@PathVariable Long user_id,
-//							@Valid @RequestBody User userRequest) {
-//		return userRepository.findById(user_id)
-//				.map(user -> {
-//					user.setUser_name(userRequest.getUser_name());
-//					user.setUser_email(userRequest.getUser_email());
-//					user.setUser_phone(userRequest.getUser_phone());
-//					user.setUser_address(userRequest.getUser_address());
-//					user.setUser_role(userRequest.getUser_role());
-//					user.setUser_password(userRequest.getUser_password());
-//					return userRepository.save(user);
-//				}).orElseThrow(() -> new ResourceNotFoundException("User not found with id "+user_id));
-//	}
+	@PutMapping("/edit_user/{user_id}")
+	public ResponseModel<User> updateUser(@PathVariable Long user_id,
+							@Valid @RequestBody User userRequest) {
+		
+		ResponseModel<User> result =  new ResponseModel<>();
+		String message = "";
+		boolean error = false;
+		
+		//Get User Data by Id
+		User userResult = userRepository.findById(user_id)
+				.map(user -> {
+					user.setFirst_name(userRequest.getFirst_name());
+					user.setLast_name(userRequest.getLast_name());
+					user.setEmail(userRequest.getEmail());
+					user.setPhone(userRequest.getPhone());
+					user.setAddress(userRequest.getAddress());
+					user.setRole_id(userRequest.getRole_id());
+					user.setPassword(userRequest.getPassword());
+					user.setIs_active(userRequest.getIs_active());
+					
+					//update to DB
+					userRepository.save(user);
+					
+					//hide password
+					user.setPassword(null);
+					return user;
+					
+					
+				}).orElseThrow(() -> new ResourceNotFoundException("User not found with id "+user_id));
+		
+		if (userRequest == null) {
+			error = true;
+			message = "Update failed. Did not find user.";
+			result.setData(null);
+		} else {
+			error = false;
+			message = "Update successfully.";
+			result.setData(userResult);
+		}
+		
+		result.setError(error);
+		result.setMessage(message);
+		
+		return result;
+	}
 	
 	@DeleteMapping("/delete_user/{user_id}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long user_id){

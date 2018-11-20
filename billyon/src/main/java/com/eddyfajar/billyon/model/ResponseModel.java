@@ -1,5 +1,7 @@
 package com.eddyfajar.billyon.model;
 
+import java.util.List;
+
 public class ResponseModel<T> {
 	
 	private boolean error;
@@ -47,5 +49,41 @@ public class ResponseModel<T> {
 	public void setData(T data) {
 		this.data = data;
 	}	
+	
 
+	static public class ResponseModelList<T> {
+		
+		private boolean error;
+		private String message;
+		private List<T> data;	
+		
+		public ResponseModelList() {
+		}
+		
+		public ResponseModelList(boolean error, String message, List<T> data) {
+			this.error = error;
+			this.message = message;
+			this.data = data;
+		}
+
+		public boolean isError() {
+			return error;
+		}
+		public void setError(boolean error) {
+			this.error = error;
+		}
+		public String getMessage() {
+			return message;
+		}
+		public void setMessage(String message) {
+			this.message = message;
+		}
+		public List<T> getData() {
+			return data;
+		}
+		public void setData(List<T> data) {
+			this.data = data;
+		}
+			
+	}
 }
