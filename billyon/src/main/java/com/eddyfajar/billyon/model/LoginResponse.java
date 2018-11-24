@@ -2,6 +2,12 @@ package com.eddyfajar.billyon.model;
 
 import java.util.List;
 
+/**
+ * @author ig.eddy.p.putra
+ * 
+ * Nov 24, 2018 2:04:59 PM
+ * @eddypastika
+ */
 public class LoginResponse {
 	
 	private User users;

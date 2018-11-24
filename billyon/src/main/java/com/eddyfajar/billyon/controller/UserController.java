@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.eddyfajar.billyon.constant.BillyonConstant;
 import com.eddyfajar.billyon.exception.ResourceNotFoundException;
 import com.eddyfajar.billyon.model.LoginResponse;
 import com.eddyfajar.billyon.model.Menu;
@@ -26,8 +27,14 @@ import com.eddyfajar.billyon.repository.MenuRepository;
 import com.eddyfajar.billyon.repository.StoreRepository;
 import com.eddyfajar.billyon.repository.UserRepository;
 
+/**
+ * @author ig.eddy.p.putra
+ * 
+ * Nov 24, 2018 2:03:55 PM
+ * @eddypastika
+ */
 @RestController
-public class UserController {
+public class UserController extends ResponseModelController<User>{
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -53,10 +60,6 @@ public class UserController {
 	public ResponseModel<User> updateUser(@PathVariable Long user_id,
 							@Valid @RequestBody User userRequest) {
 		
-		ResponseModel<User> result =  new ResponseModel<>();
-		String message = "";
-		boolean error = false;
-		
 		//Get User Data by Id
 		User userResult = userRepository.findById(user_id)
 				.map(user -> {
@@ -72,25 +75,12 @@ public class UserController {
 					//update to DB
 					userRepository.save(user);
 					
-					//hide password
-					user.setPassword(null);
 					return user;
 					
 					
 				}).orElseThrow(() -> new ResourceNotFoundException("User not found with id "+user_id));
 		
-		if (userRequest == null) {
-			error = true;
-			message = "Update failed. Did not find user.";
-			result.setData(null);
-		} else {
-			error = false;
-			message = "Update successfully.";
-			result.setData(userResult);
-		}
-		
-		result.setError(error);
-		result.setMessage(message);
+		setResponse(userResult, BillyonConstant.EDIT_USER_ERROR_TRUE, BillyonConstant.EDIT_USER_ERROR_FALSE, false, null);
 		
 		return result;
 	}
@@ -130,8 +120,6 @@ public class UserController {
 				error = false;
 				message = "login successfully.";
 				
-				//Hide Password:
-				userLogedin.setPassword(null);
 				//Get stores
 				List<Store> userStores = storeRepository.userStores(userLogedin.getId());
 				

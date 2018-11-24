@@ -8,6 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.eddyfajar.billyon.model.User;
 
+/**
+ * @author ig.eddy.p.putra
+ * 
+ * Nov 24, 2018 2:04:02 PM
+ * @eddypastika
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 

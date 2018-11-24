@@ -5,6 +5,15 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * @author ig.eddy.p.putra
+ * 
+ * Nov 24, 2018 2:04:51 PM
+ * @eddypastika
+ */
 @Entity
 @Table(name = "users")
 public class User extends AuditModel{
@@ -29,7 +38,6 @@ public class User extends AuditModel{
 	
 	private Integer role_id;
 	
-	@NotNull
 	private String password;
 	
 	
@@ -104,6 +112,8 @@ public class User extends AuditModel{
 		this.role_id = role_id;
 	}
 
+	@JsonIgnore
+	@JsonProperty(value = "password")
 	public String getPassword() {
 		return password;
 	}
