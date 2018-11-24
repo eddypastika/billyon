@@ -9,6 +9,12 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * @author ig.eddy.p.putra
+ * 
+ * Nov 24, 2018 2:04:13 PM
+ * @eddypastika
+ */
 @Entity
 @Table(name = "stores")
 public class Store extends AuditModel {
@@ -36,11 +42,14 @@ public class Store extends AuditModel {
 	@NotNull
 	private String store_type;
 	
+	@NotNull
+	private Long user_id;
+	
 	public Store() {
 	}
 
 	public Store(Long id,String store_name, String address, String latitude, String longitude,
-			String store_phone, String email, String store_type) {
+			String store_phone, String email, String store_type, Long user_id) {
 		this.id = id;
 		this.store_name = store_name;
 		this.address = address;
@@ -49,6 +58,7 @@ public class Store extends AuditModel {
 		this.store_phone = store_phone;
 		this.email = email;
 		this.store_type = store_type;
+		this.user_id = user_id;
 	}
 
 	public Long getId() {
@@ -113,5 +123,13 @@ public class Store extends AuditModel {
 
 	public void setStore_type(String store_type) {
 		this.store_type = store_type;
+	}
+
+	public Long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
 	}
 }
