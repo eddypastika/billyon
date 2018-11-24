@@ -2,7 +2,6 @@ package com.eddyfajar.billyon.controller;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.validation.Valid;
 
 import org.json.JSONException;
@@ -51,9 +50,14 @@ public class UserController extends ResponseModelController<User>{
 	}
 	
 	@PostMapping("/register_user")
-	public User registerUser(@Valid @RequestBody User user) {
+	public ResponseModel<User> registerUser(@Valid @RequestBody User user) {
 		
-		return userRepository.save(user);
+		User u = new User();
+		u = userRepository.save(user);
+		
+		setResponse(u, BillyonConstant.ADD_USER_ERROR_TRUE, BillyonConstant.ADD_USER_ERROR_FALSE, false, null);
+		
+		return result;
 	}
 	
 	@PutMapping("/edit_user/{user_id}")
