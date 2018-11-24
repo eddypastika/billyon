@@ -2,6 +2,13 @@ package com.eddyfajar.billyon.model;
 
 import java.util.List;
 
+/**
+ * @author ig.eddy.p.putra
+ * 
+ * Nov 24, 2018 2:04:34 PM
+ * @param <T>
+ * @eddypastika
+ */
 public class ResponseModel<T> {
 	
 	private boolean error;
