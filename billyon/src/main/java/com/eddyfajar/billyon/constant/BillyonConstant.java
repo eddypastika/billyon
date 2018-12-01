@@ -22,6 +22,10 @@ public class BillyonConstant {
 	public static final String ADD_STORE_ERROR_FALSE = "Store have been added.";
 	public static final String LIST_STORE_ERROR_TRUE = "No store";
 	public static final String LIST_STORE_ERROR_FALSE = "Get store successfully";
+	public static final String DEACT_STORE_ERROR_FALSE = "Deactivation store successfully.";
+	public static final String DEACT_STORE_ERROR_TRUE = "Deactivation failed. Did not find the store.";
+	public static final String EDIT_STORE_ERROR_FALSE = "Edit store successfully.";
+	public static final String EDIT_STORE_ERROR_TRUE = "Update failed. Did not find the store.";
 	
 	// CATEGORY
 	public static final String ADD_CATEGORY_ERROR_TRUE = "Add category is failed.";

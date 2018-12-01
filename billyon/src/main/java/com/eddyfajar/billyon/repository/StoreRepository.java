@@ -21,7 +21,7 @@ import com.eddyfajar.billyon.model.User;
 public interface StoreRepository extends JpaRepository<Store, Long> {
 
 	//List stores by user id
-	@Query(value="SELECT * FROM stores s WHERE s.user_id = :user_id", nativeQuery=true)
+	@Query(value="SELECT * FROM stores s WHERE s.is_active = 1 and s.user_id = :user_id", nativeQuery=true)
 	List<Store> userStores(@Param("user_id") Long user_id);
 	
 }
