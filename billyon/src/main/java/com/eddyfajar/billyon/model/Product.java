@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @eddypastika
  */
 @Entity
-@Table(name="product")
+@Table(name="products")
 public class Product extends AuditModel {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String image_path;
@@ -31,7 +30,6 @@ public class Product extends AuditModel {
 	
 	public Product(Long id, String image_path, String name, Integer stock, Integer min_stock, Integer display_price,
 			Integer actual_price, Long store_id, Long category_id) {
-		super();
 		this.id = id;
 		this.image_path = image_path;
 		this.name = name;

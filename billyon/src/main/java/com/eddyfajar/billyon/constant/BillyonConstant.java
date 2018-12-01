@@ -30,6 +30,10 @@ public class BillyonConstant {
 	// CATEGORY
 	public static final String ADD_CATEGORY_ERROR_TRUE = "Add category is failed.";
 	public static final String ADD_CATEGORY_ERROR_FALSE = "Category have been added.";
+	
+	// PRODUCT
+	public static final String ADD_PRODUCT_ERROR_TRUE = "Add product is failed.";
+	public static final String ADD_PRODUCT_ERROR_FALSE = "Product have been added.";
 
 
 }
