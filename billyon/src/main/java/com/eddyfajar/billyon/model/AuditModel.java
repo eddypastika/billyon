@@ -9,10 +9,15 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @MappedSuperclass
@@ -21,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 		value = {"created_dt", "updated_dt"},
 		allowGetters = true
 )
+
+@Component
 public abstract class AuditModel implements Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -33,8 +40,9 @@ public abstract class AuditModel implements Serializable {
 	@LastModifiedDate
 	private Date updated_dt;
 	
+	
 	@Column(name = "is_active", nullable = false , updatable = true)
-	private Integer is_active;
+	private Integer is_active = 1;
 
 	public Date getCreated_dt() {
 		return created_dt;
@@ -56,6 +64,7 @@ public abstract class AuditModel implements Serializable {
 		return is_active;
 	}
 
+	@Value("${defval.isactive}")
 	public void setIs_active(Integer is_active) {
 		this.is_active = is_active;
 	}

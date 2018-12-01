@@ -14,6 +14,8 @@ public class BillyonConstant {
 	public static final String ADD_USER_ERROR_FALSE = "User have been added.";
 	public static final String EDIT_USER_ERROR_FALSE = "Edit user successfully.";
 	public static final String EDIT_USER_ERROR_TRUE = "Update failed. Did not find the user.";
+	public static final String DEACT_USER_ERROR_FALSE = "Deactivation user successfully.";
+	public static final String DEACT_USER_ERROR_TRUE = "Deactivation failed. Did not find the user.";
 	
 	// STORE
 	public static final String ADD_STORE_ERROR_TRUE = "Add store is failed.";
