@@ -35,5 +35,7 @@ public class BillyonConstant {
 	public static final String ADD_PRODUCT_ERROR_TRUE = "Add product is failed.";
 	public static final String ADD_PRODUCT_ERROR_FALSE = "Product have been added.";
 
+	public static final String TEST = "Product have been added.";
+
 
 }
