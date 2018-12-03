@@ -86,8 +86,7 @@ public class UserController extends ResponseModelController<User>{
 					userRepository.save(user);
 					
 					return user;
-					
-					
+
 				}).orElseThrow(() -> new ResourceNotFoundException("User not found with id "+user_id));
 		
 		setResponse(userResult, BillyonConstant.EDIT_USER_ERROR_TRUE, BillyonConstant.EDIT_USER_ERROR_FALSE, false, null);
@@ -169,6 +168,4 @@ public class UserController extends ResponseModelController<User>{
 		result.setData(loginResponse);
 		return result;
 	}
-	
-
 }
