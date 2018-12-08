@@ -7,8 +7,7 @@ package com.eddyfajar.billyon.constant;
  * @eddypastika
  */
 public class BillyonConstant {
-	
-	
+
 	//USER
 	public static final String ADD_USER_ERROR_TRUE = "Add user is failed.";
 	public static final String ADD_USER_ERROR_FALSE = "User have been added.";
@@ -35,7 +34,13 @@ public class BillyonConstant {
 	public static final String ADD_PRODUCT_ERROR_TRUE = "Add product is failed.";
 	public static final String ADD_PRODUCT_ERROR_FALSE = "Product have been added.";
 
-	public static final String TEST = "Product have been added.";
+	// CART
+	public static final String ADD_CART_ERROR_TRUE = "Add cart is failed.";
+	public static final String ADD_CART_ERROR_FALSE = "Cart have been added.";
+
+	// CART PRODUCT
+	public static final String ADD_CART_PRODUCT_ERROR_TRUE = "Add cart product is failed.";
+	public static final String ADD_CART_PRODUCT_ERROR_FALSE = "Cart Product have been added.";
 
 
 }
