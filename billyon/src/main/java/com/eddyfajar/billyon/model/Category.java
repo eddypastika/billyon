@@ -67,4 +67,5 @@ public class Category extends AuditModel {
 	public void setStore_id(Long store_id) {
 		this.store_id = store_id;
 	}
+
 }
